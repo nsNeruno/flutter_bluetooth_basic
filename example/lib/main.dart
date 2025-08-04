@@ -3,7 +3,7 @@ import 'dart:convert';
 // import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bluetooth_basic/flutter_bluetooth_basic.dart';
+import 'package:flutter_bluetooth_basic_updated/flutter_bluetooth_basic.dart';
 
 void main() => runApp(MyApp());
 
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  const MyHomePage({super.key, required this.title,});
   final String title;
 
   @override
@@ -32,7 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
   BluetoothManager bluetoothManager = BluetoothManager.instance;
 
   bool _connected = false;
-  BluetoothDevice _device;
+  BluetoothDevice? _device;
   String tips = 'no device connect';
 
   @override
@@ -79,8 +79,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _onConnect() async {
-    if (_device != null && _device.address != null) {
-      await bluetoothManager.connect(_device);
+    if (_device != null && _device!.address != null) {
+      await bluetoothManager.connect(_device!);
     } else {
       setState(() {
         tips = 'please select device';
@@ -130,17 +130,17 @@ class _MyHomePageState extends State<MyHomePage> {
                 stream: bluetoothManager.scanResults,
                 initialData: [],
                 builder: (c, snapshot) => Column(
-                  children: snapshot.data
+                  children: (snapshot.data ?? [])
                       .map((d) => ListTile(
                             title: Text(d.name ?? ''),
-                            subtitle: Text(d.address),
+                            subtitle: Text(d.address ?? '-',),
                             onTap: () async {
                               setState(() {
                                 _device = d;
                               });
                             },
                             trailing:
-                                _device != null && _device.address == d.address
+                                _device != null && _device!.address == d.address
                                     ? Icon(
                                         Icons.check,
                                         color: Colors.green,
@@ -184,7 +184,7 @@ class _MyHomePageState extends State<MyHomePage> {
         stream: bluetoothManager.isScanning,
         initialData: false,
         builder: (c, snapshot) {
-          if (snapshot.data) {
+          if (snapshot.data == true) {
             return FloatingActionButton(
               child: Icon(Icons.stop),
               onPressed: () => bluetoothManager.stopScan(),

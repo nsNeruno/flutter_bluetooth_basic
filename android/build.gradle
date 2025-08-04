@@ -1,16 +1,16 @@
 group 'com.tablemi.flutter_bluetooth_basic'
 version '1.0'
 
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-    }
-
-    dependencies {
-        classpath 'com.android.tools.build:gradle:8.4.0'
-    }
-}
+//buildscript {
+//    repositories {
+//        google()
+//        mavenCentral()
+//    }
+//
+//    dependencies {
+//        classpath 'com.android.tools.build:gradle:8.4.0'
+//    }
+//}
 
 rootProject.allprojects {
     repositories {
@@ -23,7 +23,7 @@ apply plugin: 'com.android.library'
 
 android {
     namespace "com.tablemi.flutter_bluetooth_basic"
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         minSdkVersion 24

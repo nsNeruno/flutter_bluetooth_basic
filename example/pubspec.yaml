@@ -16,7 +16,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_bluetooth_basic:
+  flutter_bluetooth_basic_updated:
     path: ../
   integration_test:
     sdk: flutter

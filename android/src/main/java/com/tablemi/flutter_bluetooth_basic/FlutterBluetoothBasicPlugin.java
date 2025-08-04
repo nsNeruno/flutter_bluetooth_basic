@@ -37,7 +37,7 @@ import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
-import io.flutter.plugin.common.PluginRegistry.Registrar;
+//import io.flutter.plugin.common.PluginRegistry.Registrar;
 import io.flutter.plugin.common.PluginRegistry.RequestPermissionsResultListener;
 
 /**
@@ -59,11 +59,11 @@ public class FlutterBluetoothBasicPlugin implements FlutterPlugin, MethodCallHan
 
   // plugin should still contain the static registerWith() method to remain compatible with apps
   // that don’t use the v2 Android embedding.
-  public static void registerWith(Registrar registrar) {
-    FlutterBluetoothBasicPlugin instance = new FlutterBluetoothBasicPlugin();
-    instance.createChannel(registrar.messenger());
-    registrar.addRequestPermissionsResultListener(instance);
-  }
+//  public static void registerWith(Registrar registrar) {
+//    FlutterBluetoothBasicPlugin instance = new FlutterBluetoothBasicPlugin();
+//    instance.createChannel(registrar.messenger());
+//    registrar.addRequestPermissionsResultListener(instance);
+//  }
 
   @Override
   public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
